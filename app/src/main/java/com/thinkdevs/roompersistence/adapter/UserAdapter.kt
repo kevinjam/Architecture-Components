@@ -1,10 +1,11 @@
-package com.thinkdevs.roompersistence
+package com.thinkdevs.roompersistence.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.thinkdevs.roompersistence.R
 import com.thinkdevs.roompersistence.model.User
 
 class UserAdapter(var user:List<User>) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
