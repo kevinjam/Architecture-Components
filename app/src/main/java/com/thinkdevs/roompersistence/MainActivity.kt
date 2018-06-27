@@ -1,20 +1,45 @@
 package com.thinkdevs.roompersistence
 
+import android.arch.persistence.room.Room
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
+import android.support.v7.widget.LinearLayoutManager
+import com.thinkdevs.roompersistence.model.User
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
+//    var user =ArrayList<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+//
+//        user = ArrayList()
+//
+//for(i in 0..100){
+//    val users = User(1,"Daniel", "Kevin", "kevin@gmail.com")
+//    user.add(users)
+//}
+
+        val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "production")
+                .allowMainThreadQueries()
+                .build()
+
+        val users =db.userDao().getallUsers()
+
+
+
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        val adapter = UserAdapter(users)
+        recyclerView.adapter = adapter
+
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
