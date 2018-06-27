@@ -18,15 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
-//
-//        user = ArrayList()
-//
-//for(i in 0..100){
-//    val users = User(1,"Daniel", "Kevin", "kevin@gmail.com")
-//    user.add(users)
-//}
-
         val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "production")
                 .allowMainThreadQueries()
                 .build()
